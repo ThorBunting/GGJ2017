@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Timer : MonoBehaviour {
 
-    [SerializeField, Range(30.0f, 180.0f)]
+    [SerializeField, Range(10.0f, 180.0f)]
     private float m_initialTime = 120.0f;
 
     [SerializeField]
@@ -15,9 +15,15 @@ public class Timer : MonoBehaviour {
 
     public bool isActive { get { return m_active; } }
 
-    public void StartTimer()
+    public void Reset()
     {
         m_time = m_initialTime;
+        m_clock.text = string.Format("{0}:{1:00}:{2:00}", (int)m_time / 60, (int)m_time % 60, (m_time - (int)m_time) * 99);
+    }
+
+    public void StartTimer()
+    {
+        Reset();
         m_active = true;
     }
 
@@ -38,9 +44,5 @@ public class Timer : MonoBehaviour {
 	void Update ()
     {
         TimeLoop();
-        if(Input.anyKeyDown)
-        {
-            StartTimer();
-        }
 	}
 }

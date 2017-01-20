@@ -15,7 +15,7 @@ public class UIHandler : MonoBehaviour {
     [SerializeField]
     private TextArray[] m_text;
 
-    private bool m_fade = false;
+    private bool[] m_fade;
     
 	void Start () {
         foreach(TextArray a in m_text)
@@ -27,21 +27,14 @@ public class UIHandler : MonoBehaviour {
                 t.color = c;
             }
         }
+        m_fade = new bool[m_text.Length];
 	}
-
-    void Update()
-    {
-        if(Input.anyKeyDown)
-        {
-            Fade();
-        }
-    }
 
     public void Fade(uint collection = 0, bool fadeIn = true)
     {
-        m_fade = true;
+        m_fade[collection] = true;
         StartCoroutine(FadeLoop(collection, fadeIn));
-        StartCoroutine(FadeCancel());
+        StartCoroutine(FadeCancel(collection));
     }
 
     private IEnumerator FadeLoop(uint collection, bool fadeIn)
@@ -51,16 +44,19 @@ public class UIHandler : MonoBehaviour {
             {
                 Color c = t.color;
                 c.a += (fadeIn ? Time.deltaTime : -Time.deltaTime) / m_fadeRate;
+                c.a = Mathf.Max(0.0f, c.a);
+                c.a = Mathf.Min(1.0f, c.a);
+                
                 t.color = c;
             }
-            return m_fade;
+            return m_fade[collection];
         });
     }
 
-    private IEnumerator FadeCancel()
+    private IEnumerator FadeCancel(uint collection)
     {
         yield return new WaitForSeconds(m_fadeRate);
-        m_fade = false;
+        m_fade[collection] = false;
     }
 
 }
