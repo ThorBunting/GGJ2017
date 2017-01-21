@@ -13,18 +13,28 @@ public class Destruct : MonoBehaviour
         if (col.collider.tag == "Tentacle")
         {
             int p = col.transform.root.GetComponent<TentacleControls>().Player;
-            ScoreHandler.Add(GetComponent<NPC>().Points, p);
+            if(GetComponent<NPC>())
+            {
+                ScoreHandler.Add(GetComponent<NPC>().Points, p);
+            }
+
             GetComponent<BoxCollider>().enabled = false;
 
             Rigidbody[] rbs = gameObject.GetComponentsInChildren<Rigidbody>();
-            GetComponent<Collider>().enabled = false;
+            Collider[] cols = GetComponents<Collider>();
+
+            foreach(Collider c in cols)
+            {
+                c.enabled = false;
+            }
 
             FloatingObject[] fos = gameObject.GetComponentsInChildren<FloatingObject>();
 
             foreach (Rigidbody rb in rbs)
             {
                 rb.useGravity = true;
-                rb.AddExplosionForce(force, transform.position, radius);
+                rb.AddExplosionForce(force, col.transform.position, radius);
+                rb.AddTorque(new Vector3(Random.Range(1f, 100f), Random.Range(1f, 100f), Random.Range(1f, 100f)));
             }
 
             foreach(FloatingObject fo in fos)

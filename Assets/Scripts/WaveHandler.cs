@@ -37,7 +37,7 @@ public class WaveHandler : MonoBehaviour {
     private Vector3 SpawnPosition()
     {
         bool left = (int)(Random.value * 100) % 2 == 1;
-        float range = Random.value * 40;
+        float range = Random.value * 20;
         float radius = (range + 10) * Mathf.Tan(Mathf.Deg2Rad * Camera.main.fieldOfView / 1.29f) + 3.0f;
         radius = left ? radius : -radius;
 

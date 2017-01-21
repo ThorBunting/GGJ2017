@@ -5,13 +5,14 @@ public class FloatingObject : MonoBehaviour
 {
 
     private float waterLevel = 0f;
-    private float floatHeight = 0.5f;
+    private float floatHeight;
     private Vector3 buoyancyCentreOffset = new Vector3(0f, 0f, 0f);
-    private float bounceDamp;
+    private float bounceDamp = 0.7f;
     private Rigidbody r;
 
     void Start()
     {
+        floatHeight = Random.Range(0.05f, 0.25f);
         r = GetComponent<Rigidbody>();
     }
 
