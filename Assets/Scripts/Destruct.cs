@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Destruct : MonoBehaviour
 {
+    [SerializeField]
+    private float force = 100f;
+    [SerializeField]
+    private float radius = 5f;
 
     void OnCollisionEnter(Collision col)
     {
@@ -16,7 +20,7 @@ public class Destruct : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             foreach (Rigidbody rb in rbs)
             {
-                rb.AddExplosionForce(200f, transform.position, 5f);
+                rb.AddExplosionForce(force, transform.position, radius);
             }
         }
     }
