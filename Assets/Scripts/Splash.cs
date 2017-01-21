@@ -9,18 +9,15 @@ public class Splash : MonoBehaviour {
 	void Start () {
         m_particles = GetComponent<ParticleSystem>();
         m_particles.Stop();
-        Debug.Log("Start");
     }
 
     void OnTriggerEnter(Collider col)
     {
         m_particles.Play();
-        Debug.Log("Enter");
     }
 
     void OnTriggerExit(Collider col)
     {
         m_particles.Stop();
-        Debug.Log("Exit");
     }
 }

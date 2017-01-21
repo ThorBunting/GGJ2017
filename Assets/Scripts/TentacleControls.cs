@@ -28,16 +28,13 @@ public class TentacleControls : MonoBehaviour
 
     void Update()
     {
-        float vert = Input.GetAxis(verticalAxis) * forceMultiplier;
-        float hori = Input.GetAxis(horizontalAxis) * forceMultiplier;
-		
-        Vector3 force = new Vector3(hori, Mathf.Min(0.0f, vert), Mathf.Max(0.0f, -vert));
-
-        Debug.Log(r.velocity.magnitude);
-
         if (r.velocity.magnitude < maxSpeed)
         {
-            tentacleTop.GetComponent<Rigidbody>().AddForce(hori,  vert, Mathf.Max(0.0f, -vert), ForceMode.Force);
+            float vert = Input.GetAxis(verticalAxis) * forceMultiplier;
+            float hori = Input.GetAxis(horizontalAxis) * forceMultiplier;
+		
+            Vector3 force = new Vector3(hori, Mathf.Max(0.0f, vert), -Mathf.Min(0.0f, vert) * 1.5f);
+            tentacleTop.GetComponent<Rigidbody>().AddForce(force, ForceMode.Force);
         }
     }
 }
