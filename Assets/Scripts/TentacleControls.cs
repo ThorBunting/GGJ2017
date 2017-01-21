@@ -48,9 +48,11 @@ public class TentacleControls : MonoBehaviour
         if(Input.GetKeyDown(colourButton))
         {
             m_materialID = ++m_materialID % m_material.Length;
-            Material m = ren.material;
-            m = m_material[m_materialID];
-            ren.material = m;
+            Material[] m = ren.materials;
+            m[0] = m_material[m_materialID];
+            m[1] = m_material[(m_materialID + 1) % m_material.Length];
+            m[2] = m_material[(m_materialID + 2) % m_material.Length];
+            ren.materials = m;
         }
     }
 }
