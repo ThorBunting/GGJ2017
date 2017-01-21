@@ -12,7 +12,9 @@ public class TentacleControls : MonoBehaviour
         float vert = Input.GetAxis("Vertical") * forceMultiplier;
         float hori = Input.GetAxis("Horizontal") * forceMultiplier;
 
-        Debug.Log("Force Added: " + new Vector3(vert, 0f, hori));
+        //if (hori >= 0)
+
+            //Debug.Log("Force Added: " + new Vector3(vert, 0f, hori));
 
         tentacleTop.GetComponent<Rigidbody>().AddForce(vert, 0f, hori, ForceMode.Force);
     }
