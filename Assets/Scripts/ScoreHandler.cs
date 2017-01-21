@@ -50,16 +50,4 @@ public class ScoreHandler : MonoBehaviour {
         m_text[1] = transform.GetChild(1).GetComponent<Text>();
         Reset();
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Add(250.0f, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Add(500.0f, 1);
-        }
-    }
 }

@@ -5,7 +5,13 @@ public class TentacleControls : MonoBehaviour
 {
     [SerializeField]
     private GameObject tentacleTop;
+
+    [SerializeField]
+    private int m_player = 0;
+
     private float forceMultiplier = 20;
+
+    public int Player { get { return m_player; } }
 
     void Update()
     {
