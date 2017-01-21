@@ -26,12 +26,18 @@ public class TentacleControls : MonoBehaviour
 
     void Start()
     {
-        m_materialID = m_player;
+        m_materialID = (m_player * 6) % m_material.Length;
         verticalAxis = "Vertical" + m_player.ToString();
         horizontalAxis = "Horizontal" + m_player.ToString();
         colourButton = KeyCode.JoystickButton4 + m_player;
         rig = tentacleTop.GetComponent<Rigidbody>();
         ren = transform.GetChild(1).GetComponent<Renderer>();
+
+        Material[] m = ren.materials;
+        m[0] = m_material[m_materialID];
+        m[1] = m_material[(m_materialID + 1) % m_material.Length];
+        m[2] = m_material[(m_materialID + 2) % m_material.Length];
+        ren.materials = m;
     }
 
     void Update()
