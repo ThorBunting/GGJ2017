@@ -5,15 +5,15 @@ public class TentacleControls : MonoBehaviour
 {
     [SerializeField]
     private GameObject tentacleTop;
-
     [SerializeField]
     private int m_player = 0;
+    private float forceMultiplier = 200;
 
 
     private float maxSpeed = 200f;
     private string verticalAxis;
     private string horizontalAxis;
-    private float forceMultiplier = 300;
+
     Rigidbody r;
 
 
