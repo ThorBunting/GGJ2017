@@ -46,8 +46,8 @@ public class ScoreHandler : MonoBehaviour {
 
     void Start()
     {
-        m_text[0] = transform.GetChild(0).GetComponent<Text>();
-        m_text[1] = transform.GetChild(1).GetComponent<Text>();
+        m_text[0] = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        m_text[1] = transform.GetChild(1).GetChild(0).GetComponent<Text>();
         Reset();
     }
 }
