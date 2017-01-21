@@ -11,8 +11,7 @@ public class TentacleControls : MonoBehaviour
 
     private string verticalAxis;
     private string horizontalAxis;
-
-    private float forceMultiplier = 20;
+    private float forceMultiplier = 100;
 
     public int Player { get { return m_player; } }
 
@@ -26,10 +25,6 @@ public class TentacleControls : MonoBehaviour
     {
         float vert = Input.GetAxis(verticalAxis) * forceMultiplier;
         float hori = Input.GetAxis(horizontalAxis) * forceMultiplier;
-
-        //if (hori >= 0)
-
-            //Debug.Log("Force Added: " + new Vector3(vert, 0f, hori));
 
         tentacleTop.GetComponent<Rigidbody>().AddForce(hori, Mathf.Min(0.0f, vert), Mathf.Max(0.0f, -vert), ForceMode.Force);
     }
