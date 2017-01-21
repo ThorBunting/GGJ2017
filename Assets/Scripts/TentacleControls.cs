@@ -9,32 +9,48 @@ public class TentacleControls : MonoBehaviour
     private int m_player = 0;
     private float forceMultiplier = 200;
 
+    [SerializeField]
+    private Material[] m_material;
+    private int m_materialID;
 
     private float maxSpeed = 30f;
+
     private string verticalAxis;
     private string horizontalAxis;
+    private KeyCode colourButton;
 
-    Rigidbody r;
-
+    Rigidbody rig;
+    Renderer ren;
 
     public int Player { get { return m_player; } }
 
     void Start()
     {
+        m_materialID = m_player;
         verticalAxis = "Vertical" + m_player.ToString();
         horizontalAxis = "Horizontal" + m_player.ToString();
-        r = tentacleTop.GetComponent<Rigidbody>();
+        colourButton = KeyCode.JoystickButton4 + m_player;
+        rig = tentacleTop.GetComponent<Rigidbody>();
+        ren = transform.GetChild(1).GetComponent<Renderer>();
     }
 
     void Update()
     {
-        if (r.velocity.magnitude < maxSpeed)
+        if (rig.velocity.magnitude < maxSpeed)
         {
             float vert = Input.GetAxis(verticalAxis) * forceMultiplier;
             float hori = Input.GetAxis(horizontalAxis) * forceMultiplier;
 		
             Vector3 force = new Vector3(hori, Mathf.Max(0.0f, vert), -Mathf.Min(0.0f, vert) * 1.5f);
             tentacleTop.GetComponent<Rigidbody>().AddForce(force, ForceMode.Force);
+        }
+
+        if(Input.GetKeyDown(colourButton))
+        {
+            m_materialID = ++m_materialID % m_material.Length;
+            Material m = ren.material;
+            m = m_material[m_materialID];
+            ren.material = m;
         }
     }
 }

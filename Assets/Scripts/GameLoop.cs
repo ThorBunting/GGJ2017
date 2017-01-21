@@ -13,6 +13,7 @@ public class GameLoop : MonoBehaviour {
 
     private bool m_showControls = false;
     private bool m_inGame = false;
+    private bool m_beginning = false;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class GameLoop : MonoBehaviour {
 
     private IEnumerator BeginGame()
     {
+        m_beginning = true;
         m_ui.Fade(0, true);
         m_ui.Fade(1, false);
         m_timer.Reset();
@@ -34,6 +36,7 @@ public class GameLoop : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         m_timer.StartTimer();
         m_inGame = true;
+        m_beginning = false;
     }
 
     private IEnumerator ShowControls()
@@ -46,7 +49,7 @@ public class GameLoop : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !m_inGame) { StartCoroutine(BeginGame()); }
+        if (Input.GetKeyDown(KeyCode.JoystickButton0) && !m_inGame && !m_beginning) { StartCoroutine(BeginGame()); }
 
         if(m_inGame)
         {
