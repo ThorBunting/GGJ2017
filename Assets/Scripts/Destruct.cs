@@ -4,7 +4,7 @@ using System.Collections;
 public class Destruct : MonoBehaviour
 {
     [SerializeField]
-    private float force = 100f;
+    private float forceMultiplier = 20f;
     [SerializeField]
     private float radius = 5f;
 
@@ -33,7 +33,7 @@ public class Destruct : MonoBehaviour
             foreach (Rigidbody rb in rbs)
             {
                 rb.useGravity = true;
-                rb.AddExplosionForce(force, col.transform.position, radius);
+                rb.AddExplosionForce(forceMultiplier * col.relativeVelocity.magnitude, col.transform.position, radius);
                 rb.AddTorque(new Vector3(Random.Range(1f, 100f), Random.Range(1f, 100f), Random.Range(1f, 100f)));
             }
 
