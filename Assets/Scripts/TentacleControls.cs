@@ -10,7 +10,7 @@ public class TentacleControls : MonoBehaviour
     private float forceMultiplier = 200;
 
 
-    private float maxSpeed = 200f;
+    private float maxSpeed = 30f;
     private string verticalAxis;
     private string horizontalAxis;
 

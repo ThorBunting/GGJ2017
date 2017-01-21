@@ -18,9 +18,18 @@ public class Destruct : MonoBehaviour
 
             Rigidbody[] rbs = gameObject.GetComponentsInChildren<Rigidbody>();
             GetComponent<Collider>().enabled = false;
+
+            FloatingObject[] fos = gameObject.GetComponentsInChildren<FloatingObject>();
+
             foreach (Rigidbody rb in rbs)
             {
+                rb.useGravity = true;
                 rb.AddExplosionForce(force, transform.position, radius);
+            }
+
+            foreach(FloatingObject fo in fos)
+            {
+                fo.enabled = true;
             }
         }
     }
