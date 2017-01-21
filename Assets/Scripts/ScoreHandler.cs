@@ -39,6 +39,11 @@ public class ScoreHandler : MonoBehaviour {
                 2;
     }
 
+    public static float Total()
+    {
+        return m_score[0] + m_score[1];
+    }
+
     void Start()
     {
         m_text[0] = transform.GetChild(0).GetComponent<Text>();

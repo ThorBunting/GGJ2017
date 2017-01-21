@@ -6,16 +6,19 @@ public class GameLoop : MonoBehaviour {
 
     private Timer m_timer;
     private UIHandler m_ui;
+    private WaveHandler m_wave;
 
     [SerializeField]
     private Text m_victor;
 
+    private bool m_showControls = false;
     private bool m_inGame = false;
 
     void Start()
     {
         m_ui = FindObjectOfType<UIHandler>();
         m_timer = FindObjectOfType<Timer>();
+        m_wave = FindObjectOfType<WaveHandler>();
     }
 
     private IEnumerator BeginGame()
@@ -23,15 +26,27 @@ public class GameLoop : MonoBehaviour {
         m_ui.Fade(0, true);
         m_ui.Fade(1, false);
         m_timer.Reset();
+        m_wave.Begin();
+
+        StartCoroutine(ShowControls());
+        
         ScoreHandler.Reset();
         yield return new WaitForSeconds(3.0f);
         m_timer.StartTimer();
         m_inGame = true;
     }
 
+    private IEnumerator ShowControls()
+    {
+        m_ui.Fade(2, true);
+        m_showControls = true;
+        yield return new WaitWhile(() => { return m_wave.Wave == 0 && m_showControls; });
+        m_ui.Fade(2, false);
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !m_inGame) { Debug.Log("Begin"); StartCoroutine(BeginGame()); }
+        if (Input.GetKeyDown(KeyCode.Space) && !m_inGame) { StartCoroutine(BeginGame()); }
 
         if(m_inGame)
         {
@@ -59,7 +74,9 @@ public class GameLoop : MonoBehaviour {
                 }
                 m_ui.Fade(0, false);
                 m_ui.Fade(1, true);
+                m_showControls = false;
                 m_victor.text = victor + "\n" + score.ToString(ScoreHandler.Format);
+                m_wave.Reset();
             }
         }
     }
