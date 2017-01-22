@@ -22,19 +22,24 @@ public class Destruct : MonoBehaviour
 
             Rigidbody[] rbs = gameObject.GetComponentsInChildren<Rigidbody>();
             Collider[] cols = GetComponents<Collider>();
+            AudioSource[] audioSources = gameObject.GetComponents<AudioSource>();
+            FloatingObject[] fos = gameObject.GetComponentsInChildren<FloatingObject>();
 
-            foreach(Collider c in cols)
+            foreach (Collider c in cols)
             {
                 c.enabled = false;
             }
-
-            FloatingObject[] fos = gameObject.GetComponentsInChildren<FloatingObject>();
 
             foreach (Rigidbody rb in rbs)
             {
                 rb.useGravity = true;
                 rb.AddExplosionForce(forceMultiplier * col.relativeVelocity.magnitude, col.transform.position, radius);
                 rb.AddTorque(new Vector3(Random.Range(1f, 100f), Random.Range(1f, 100f), Random.Range(1f, 100f)));
+            }
+
+            foreach(AudioSource audio in audioSources)
+            {
+                audio.Stop();
             }
 
             foreach(FloatingObject fo in fos)
