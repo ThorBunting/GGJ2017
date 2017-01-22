@@ -33,11 +33,17 @@ public class Destruct : MonoBehaviour
                 Collider[] cols = GetComponents<Collider>();
                 FloatingObject[] fos = gameObject.GetComponentsInChildren<FloatingObject>();
 				AudioSource[] audioSources = gameObject.GetComponents<AudioSource>();
+                ParticleSystem[] particles = gameObject.GetComponentsInChildren<ParticleSystem>();
      
 				foreach(AudioSource audio in audioSources)
 				{
 					audio.Stop();
 				}
+
+                foreach(ParticleSystem particle in particles)
+                {
+                    particle.Play();
+                }
 
                 foreach(Collider c in cols)
                 {

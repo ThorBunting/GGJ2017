@@ -27,6 +27,7 @@ public class GameLoop : MonoBehaviour {
 
     private IEnumerator Prepare()
     {
+        m_prepared = false;
         yield return new WaitForSeconds(2.0f);
         m_prepared = true;
     }
@@ -90,6 +91,7 @@ public class GameLoop : MonoBehaviour {
                 m_showControls = false;
                 m_victor.text = victor + "\n" + score.ToString(ScoreHandler.Format);
                 m_wave.Reset();
+                StartCoroutine(Prepare());
             }
         }
     }
