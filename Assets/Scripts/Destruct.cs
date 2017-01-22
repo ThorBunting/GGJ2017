@@ -12,34 +12,43 @@ public class Destruct : MonoBehaviour
     {
         if (col.collider.tag == "Tentacle")
         {
+            bool br = false;
             int p = col.transform.root.GetComponent<TentacleControls>().Player;
-            if(GetComponent<NPC>())
+            NPC n = GetComponent<NPC>();
+            if(n != null)
             {
-                ScoreHandler.Add(GetComponent<NPC>().Points, p);
+                ScoreHandler.Add(n.Points, p);
+                n.Health -= col.relativeVelocity.magnitude / 10;
+                br = n.Health < 0.0f;
+            } else
+            {
+                br = true;
             }
 
-            GetComponent<BoxCollider>().enabled = false;
-
-            Rigidbody[] rbs = gameObject.GetComponentsInChildren<Rigidbody>();
-            Collider[] cols = GetComponents<Collider>();
-
-            foreach(Collider c in cols)
+            if(br)
             {
-                c.enabled = false;
-            }
+                GetComponent<BoxCollider>().enabled = false;
 
-            FloatingObject[] fos = gameObject.GetComponentsInChildren<FloatingObject>();
+                Rigidbody[] rbs = gameObject.GetComponentsInChildren<Rigidbody>();
+                Collider[] cols = GetComponents<Collider>();
+                FloatingObject[] fos = gameObject.GetComponentsInChildren<FloatingObject>();
 
-            foreach (Rigidbody rb in rbs)
-            {
-                rb.useGravity = true;
-                rb.AddExplosionForce(forceMultiplier * col.relativeVelocity.magnitude, col.transform.position, radius);
-                rb.AddTorque(new Vector3(Random.Range(1f, 100f), Random.Range(1f, 100f), Random.Range(1f, 100f)));
-            }
+                foreach(Collider c in cols)
+                {
+                    c.enabled = false;
+                }
 
-            foreach(FloatingObject fo in fos)
-            {
-                fo.enabled = true;
+                foreach (Rigidbody rb in rbs)
+                {
+                    rb.useGravity = true;
+                    rb.AddExplosionForce(forceMultiplier * col.relativeVelocity.magnitude, col.transform.position, radius);
+                    rb.AddTorque(new Vector3(Random.Range(1f, 100f), Random.Range(1f, 100f), Random.Range(1f, 100f)));
+                }
+
+                foreach(FloatingObject fo in fos)
+                {
+                    fo.enabled = true;
+                }
             }
         }
     }

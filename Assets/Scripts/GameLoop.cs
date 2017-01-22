@@ -20,6 +20,7 @@ public class GameLoop : MonoBehaviour {
         m_ui = FindObjectOfType<UIHandler>();
         m_timer = FindObjectOfType<Timer>();
         m_wave = FindObjectOfType<WaveHandler>();
+        m_ui.Fade(3, true);
     }
 
     private IEnumerator BeginGame()
@@ -27,6 +28,7 @@ public class GameLoop : MonoBehaviour {
         m_beginning = true;
         m_ui.Fade(0, true);
         m_ui.Fade(1, false);
+        m_ui.Fade(3, false);
         m_timer.Reset();
         m_wave.Begin();
 
