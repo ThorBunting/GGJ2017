@@ -38,7 +38,7 @@ public class WaveHandler : MonoBehaviour {
     {
         bool left = (int)(Random.value * 100) % 2 == 1;
         float range = Random.value * 20;
-        float radius = (range + 10) * Mathf.Tan(Mathf.Deg2Rad * Camera.main.fieldOfView / 1.29f) + 3.0f;
+        float radius = (range) * Mathf.Tan(Mathf.Deg2Rad * Camera.main.fieldOfView / 1.5f) + 30.0f;
         radius = left ? radius : -radius;
 
         return new Vector3(radius,0,range);
@@ -49,9 +49,9 @@ public class WaveHandler : MonoBehaviour {
         GameObject g = m_wave[m_waveIndex].NPC[(int)(m_wave[m_waveIndex].NPC.Length * Random.Range(0, 0.99f))];
         g = GameObject.Instantiate(g);
         g.transform.position = SpawnPosition();
-
         g.transform.SetParent(m_object.transform);
-        g.transform.LookAt(new Vector3(0,0,g.transform.position.z));
+        g.transform.LookAt(new Vector3(0, 0, g.transform.position.z));
+
         yield return new WaitForSeconds(m_wave[m_waveIndex].SpawnRate);
         StartCoroutine(SpawnLoop());
     }
