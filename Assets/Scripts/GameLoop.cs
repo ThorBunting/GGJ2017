@@ -14,6 +14,7 @@ public class GameLoop : MonoBehaviour {
     private bool m_showControls = false;
     private bool m_inGame = false;
     private bool m_beginning = false;
+    private bool m_prepared = false;
 
     void Start()
     {
@@ -21,6 +22,13 @@ public class GameLoop : MonoBehaviour {
         m_timer = FindObjectOfType<Timer>();
         m_wave = FindObjectOfType<WaveHandler>();
         m_ui.Fade(3, true);
+        StartCoroutine(Prepare());
+    }
+
+    private IEnumerator Prepare()
+    {
+        yield return new WaitForSeconds(2.0f);
+        m_prepared = true;
     }
 
     private IEnumerator BeginGame()
@@ -51,7 +59,7 @@ public class GameLoop : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton0) && !m_inGame && !m_beginning) { StartCoroutine(BeginGame()); }
+        if (Input.GetKeyDown(KeyCode.JoystickButton0) && !m_inGame && !m_beginning && m_prepared) { StartCoroutine(BeginGame()); }
 
         if(m_inGame)
         {
