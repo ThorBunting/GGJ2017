@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: fce5f945c1e9c3244bfa47d9513bcff6
+timeCreated: 1485084944
+licenseType: Pro
+ShaderImporter:
+  defaultTextures:
+  - _WaveNormal: {fileID: 2800000, guid: e8b338d7ae5afe74f87738a78af10c36, type: 3}
+  - _IslandMask: {instanceID: 0}
+  - _FoamDiffuse: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

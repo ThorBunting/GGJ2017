@@ -1,0 +1,48 @@
+Music
+-	Music title - Jazzy Frenchy
+-	http://www.bensound.com/royalty-free-music/track/jazzy-frenchy
+-	Credits info: Royalty Free Music from Bensound
+
+Sound Effects
+-	OceanStream
+-	Credits info: Stream + ocean.aif by Rocktopus (no date) Freesound.org.
+-	Splash_01
+-	Credits info: Water short-1.wav by SophronsineSoundDesign (no date) Freesound.org.
+-	Scream_01
+-	Credits info: Screaming 10.wav by vtownpunks (no date) Freesound.org.
+-	Scream_02
+-	Credits info: 452, tyug (no date) Scream 01 by adriancalzon Freesound.org.
+-	Seagull_01
+-	Credits info: Seagulls by Eelke (no date) Freesound.org.
+-	Explosion_01
+-	Credits info: Big explosion.wav by ryansnook (no date) Freesound.org.
+-	Explosions_02
+-	No need for credits info (no copyright): http://www.freesound.org/people/tommccann/sounds/235968/
+-	TentacleWaterMove_01
+-	Credits info: Bigsplash.wav by rasmuspnielsen (no date) Freesound.org.
+-	Boat_01
+-	Credit info: Alster ship.mp3 by Grotelue (no date) Freesound.org.
+-	Boat_02
+-	Credit info: Motor boat #2.wav by arnaud coutancier (no date) Freesound.org.
+-	Boat_03
+-	Credit info: Sailboat motoring exterior 1 by AugustSandberg (no date) Freesound.org.
+-	Boat_04
+-	Credit info: Yanmar_Engine_Slow.mp3 by ivolipa (no date) Freesound.org.
+-	Helicopter_01
+-	Credit info: 0418, davidlewis (no date) Helicopter.wav by lezaarth Freesound.org.
+-	Swimming_01
+-	Credit info: Splash, jumping, B.wav by InspectorJ (no date) Freesound.org.
+-	Airplane_01
+-	Credit info: Propeller plane flyby.flac by YuriNikolai (no date) Freesound.org.
+-	Button_Clicked_01
+-	Credit info: Gore slush slime sounds by VlatkoBlazek (no date) Freesound.org.
+-	Button_Switched_01
+-	Credit info: Gore slush slime sounds by VlatkoBlazek (no date) Freesound.org.
+-	Octo_Roar
+-	Credit info: Cthulhu roar.wav by scorpion67890 (no date) Freesound.org.
+-	Duck Quack Sound
+-	Credit info: duck-quack-sound.wav by Alexander (no date) http://www.orangefreesounds.com/duck-quack-sound/
+-	Tentacle Font
+-	Credit info: Tentacle Font by Jeff Bensch (No date) http://jbensch.deviantart.com/
+-	Water Shader
+-	Credit info: Mobile Water Shader by Sergey Marasov (No date) http://brabl.com/unity-5-mobile-water-shader/
