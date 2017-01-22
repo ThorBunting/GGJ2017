@@ -17,27 +17,10 @@ public class Destruct : MonoBehaviour
             NPC n = GetComponent<NPC>();
             if(n != null)
             {
-                ScoreHandler.Add(GetComponent<NPC>().Points, p);
-            }
-
-            GetComponent<BoxCollider>().enabled = false;
-
-            Rigidbody[] rbs = gameObject.GetComponentsInChildren<Rigidbody>();
-            Collider[] cols = GetComponents<Collider>();
-            AudioSource[] audioSources = gameObject.GetComponents<AudioSource>();
-            FloatingObject[] fos = gameObject.GetComponentsInChildren<FloatingObject>();
-
-            foreach (Collider c in cols)
-            {
-                c.enabled = false;
-            }
-
-            foreach (Rigidbody rb in rbs)
-			{
                 ScoreHandler.Add(n.Points, p);
                 n.Health -= col.relativeVelocity.magnitude / 10;
                 br = n.Health < 0.0f;
-            } else
+            }else
             {
                 br = true;
             }
@@ -49,7 +32,8 @@ public class Destruct : MonoBehaviour
                 Rigidbody[] rbs = gameObject.GetComponentsInChildren<Rigidbody>();
                 Collider[] cols = GetComponents<Collider>();
                 FloatingObject[] fos = gameObject.GetComponentsInChildren<FloatingObject>();
-				
+				AudioSource[] audioSources = gameObject.GetComponents<AudioSource>();
+     
 				foreach(AudioSource audio in audioSources)
 				{
 					audio.Stop();
